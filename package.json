@@ -1,16 +1,29 @@
 {
     "name": "performance-time-tracker",
-    "version": "1.0.1",
-    "description": "A simple Node.js script performance time monitoring package",
+    "version": "1.0.3",
+    "description": "A Node.js package for performance time tracking of functions or scripts",
     "main": "dist/index.js",
     "scripts": {
       "test": "echo \"No tests specified\" && exit 0",
       "start": "node dist/index.js"
     },
     "keywords": [
-      "node",
+      "node.js",
+      "execution time",
+      "benchmark",
       "monitoring",
+      "code performance",
+      "performance monitoring",
+      "performance analysis",
+      "runtime analysis",
+      "execution analysis",
+      "code benchmarking",
+      "execution duration",
+      "code profiling",
+      "analysis",
       "performance",
+      "function performance",
+      "code performance",
       "time",
       "tracking",
       "debugger"

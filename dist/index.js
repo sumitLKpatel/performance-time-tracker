@@ -27,7 +27,7 @@ module.exports = {
         }
         currentStart = now();
         currentName = name;
-        console.log(`Execution started for function "${name}".`);
+        console.log(`Execution started for "${name}".`);
     },
     stopMonitoring: () => {
         if (currentStart === null) {
