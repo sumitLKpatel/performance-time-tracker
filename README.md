@@ -36,6 +36,16 @@ startMonitoring('myFunction');
 // Stop monitoring the function
 stopMonitoring();
 ```
+OR
+
+```javascript
+const {track} = require('performance-time-tracker');
+
+const wrappedAsyncFunction = track('myFunction', asyncFunction);
+
+await wrappedAsyncFunction();
+
+```
 
 To measure how long a function or code block takes to run, wrap it between startMonitoring(label) and stopMonitoring().
 
@@ -66,6 +76,30 @@ stopMonitoring();
 //Execution started for function "myFunction".
 //[1] [myFunction] - Execution Time:     3000.00 ms
 ```
+
+OR
+
+```javascript
+const {track} = require('performance-time-tracker');
+
+const asyncFunction = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('Response after 3 seconds');
+        }, 3000);
+    });
+};
+
+const wrappedAsyncFunction = track('myFunction', asyncFunction);
+
+await wrappedAsyncFunction();
+
+
+//result
+//Execution started for function "myFunction".
+//[1] [myFunction] - Execution Time:     3000.00 ms
+```
+
 You can monitor multiple functions sequentially:
 
 ```javascript

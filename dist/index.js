@@ -1,4 +1,3 @@
-// index.js
 const now = require('performance-now');
 require('colors');
 
@@ -20,23 +19,63 @@ function printExecutionTime(name, start, end) {
 }
 
 module.exports = {
-    startMonitoring:  (name) => {
+    startMonitoring: (name) => {
         if (currentStart !== null) {
-            console.log('A execution is already in progress. Call stop() to end it.'.yellow);
+            console.log('An execution is already in progress. Call stopMonitoring() to end it.'.yellow);
             return;
         }
         currentStart = now();
         currentName = name;
         console.log(`Execution started for "${name}".`);
     },
+
     stopMonitoring: () => {
         if (currentStart === null) {
-            console.log('No execution is in progress. Call start(name) to begin a execution.'.yellow);
+            console.log('No execution is in progress. Call startMonitoring(name) to begin an execution.'.yellow);
             return;
         }
         const end = now();
         printExecutionTime(currentName, currentStart, end);
         currentStart = null;
         currentName = null;
+    },
+
+    /**
+     * Wrap a function (sync or async) to automatically
+     * monitor its execution time when called.
+     * 
+     * Usage:
+     * const wrappedFunc = track('label', originalFunction);
+     * await wrappedFunc(...args);
+     */
+    track: (name, fn) => {
+        return async function (...args) {
+            if (currentStart !== null) {
+                console.log('Warning: Another execution is already in progress. Overlapping timings may be incorrect.'.yellow);
+            }
+            currentStart = now();
+            currentName = name;
+            console.log(`Execution started for "${name}".`);
+
+            try {
+                const result = await fn(...args);
+
+                const end = now();
+
+                // Use the 'name' variable directly instead of currentName
+                printExecutionTime(name, currentStart, end);
+
+                // Reset after printing
+                currentStart = null;
+                currentName = null;
+
+                return result;
+            } catch (err) {
+                currentStart = null;
+                currentName = null;
+                throw err;
+            }
+        };
     }
+
 };

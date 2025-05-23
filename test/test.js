@@ -1,4 +1,4 @@
-const { startMonitoring, stopMonitoring } = require('../dist/index');
+const { startMonitoring, stopMonitoring, track } = require('../dist/index');
 
 
 
@@ -16,5 +16,11 @@ async function fetchData() {
     stopMonitoring()
 }
 
+async function trackData() {
+    const wrappedDelayFunction = track('myFunction', delay);
+    await wrappedDelayFunction();
+}
 
-fetchData();
+
+// fetchData();
+trackData();
