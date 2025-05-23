@@ -1,6 +1,6 @@
 {
     "name": "performance-time-tracker",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "A Node.js package for performance time tracking of functions or scripts",
     "main": "dist/index.js",
     "scripts": {
