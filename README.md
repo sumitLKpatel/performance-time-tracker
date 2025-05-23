@@ -1,13 +1,13 @@
 
 # Execution Time Measurement for Node.js Functions
 
-This npm package provides a simple and efficient way to measure the execution time of your Node.js functions or scripts. Whether you're benchmarking code performance, profiling function runtime, or analyzing execution speed, this package helps you gain valuable insights into the performance of your code.
+A simple and lightweight Node.js utility to measure the execution time of your functions or code blocks. Ideal for benchmarking, profiling, or just keeping an eye on performance.
 
-
- [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://choosealicense.com/licenses/mit/)
+[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://choosealicense.com/licenses/mit/)
 [![Node.js](https://img.shields.io/badge/Node.js-v20-green.svg)](https://nodejs.org/)
 [![Version](https://img.shields.io/badge/Version-1.0.1-blue.svg)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)]()
+
 
  ## Features
 * Measure the execution time of individual functions
@@ -37,7 +37,11 @@ startMonitoring('myFunction');
 stopMonitoring();
 ```
 
-You can use this function as suggested, and you will get result in your node js project Terminal, where your server is running.
+To measure how long a function or code block takes to run, wrap it between startMonitoring(label) and stopMonitoring().
+
+The label is a name you give the block you're monitoring—this helps identify it in the output.
+
+You can use this for both synchronous and asynchronous functions.
 
 ## Example
 ```javascript
@@ -62,7 +66,7 @@ stopMonitoring();
 //Execution started for function "myFunction".
 //[1] [myFunction] - Execution Time:     3000.00 ms
 ```
-Also, you can call this function for multiple lines as well,
+You can monitor multiple functions sequentially:
 
 ```javascript
 const {startMonitoring, stopMonitoring} = require('performance-time-tracker');
@@ -103,4 +107,4 @@ stopMonitoring();
 
 ## License
 performance-time-tracker is released under the [MIT License](http://opensource.org/licenses/MIT).
-Copyright (c) 2024 [@sumitLKpatel](https://github.com/sumitLKpatel)
+Copyright (c) 2025 [@sumitLKpatel](https://github.com/sumitLKpatel)
